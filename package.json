@@ -1,0 +1,22 @@
+{
+  "name": "tokokelam",
+  "version": "1.0.0",
+  "description": "Tokopedia menyediakan teknologi sebagai solusi untuk memberdayakan jutaan penjual dan konsumen agar dapat berpartisipasi membangun masa depan perdagangan",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "pg": "^8.11.3",
+    "sequelize": "^6.33.0",
+    "sweetalert2": "^11.7.31"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.6.1"
+  }
+}

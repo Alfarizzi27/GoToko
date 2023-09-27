@@ -1,0 +1,160 @@
+[
+    {
+        "name": "Dell XPS 15",
+        "category": "Laptop",
+        "description": "Powerful laptop for professionals and gamers.",
+        "price": 19875000,
+        "createdAt": "2023-09-27T10:00:00Z"
+    },
+    {
+        "name": "Apple MacBook Air",
+        "category": "Laptop",
+        "description": "Lightweight and sleek laptop for everyday use.",
+        "price": 13999000,
+        "createdAt": "2023-09-27T11:30:00Z"
+    },
+    {
+        "name": "HP Pavilion Desktop",
+        "category": "Computer",
+        "description": "Versatile desktop computer for home and office use.",
+        "price": 9799000,
+        "createdAt": "2023-09-27T09:45:00Z"
+    },
+    {
+        "name": "Samsung 55-Inch 4K Smart TV",
+        "category": "Electronics",
+        "description": "High-quality 4K Smart TV for immersive entertainment.",
+        "price": 11199000,
+        "createdAt": "2023-09-27T15:20:00Z"
+    },
+    {
+        "name": "Organic Brown Rice",
+        "category": "Food",
+        "description": "Healthy and organic brown rice for your meals.",
+        "price": 89999,
+        "createdAt": "2023-09-27T14:15:00Z"
+    },
+    {
+        "name": "Men's Classic T-Shirt",
+        "category": "Clothing",
+        "description": "Comfortable and stylish cotton t-shirt for men.",
+        "price": 249999,
+        "createdAt": "2023-09-27T13:05:00Z"
+    },
+    {
+        "name": "Harry Potter and the Sorcerer's Stone",
+        "category": "Books",
+        "description": "The first book in the Harry Potter series by J.K. Rowling.",
+        "price": 162999,
+        "createdAt": "2023-09-27T12:10:00Z"
+    },
+    {
+        "name": "Modern Leather Sofa",
+        "category": "Furniture",
+        "description": "Sleek and modern leather sofa for your living room.",
+        "price": 11199000,
+        "createdAt": "2023-09-27T17:45:00Z"
+    },
+    {
+        "name": "Toyota Camry Hybrid",
+        "category": "Automotive",
+        "description": "Fuel-efficient hybrid sedan with advanced features.",
+        "price": 391992000,
+        "createdAt": "2023-09-27T16:30:00Z"
+    },
+    {
+        "name": "Nike Running Shoes",
+        "category": "Sports & Outdoors",
+        "description": "High-performance running shoes for athletes.",
+        "price": 1259999,
+        "createdAt": "2023-09-27T18:25:00Z"
+    },
+    {
+        "name": "Organic Face Cream",
+        "category": "Health & Beauty",
+        "description": "Organic face cream for skincare and moisturizing.",
+        "price": 349999,
+        "createdAt": "2023-09-27T19:15:00Z"
+    },
+    {
+        "name": "Dell XPS 15",
+        "category": "Laptop",
+        "description": "Powerful laptop for professionals and gamers.",
+        "price": 19875000,
+        "createdAt": "2023-09-27T10:00:00Z"
+    },
+    {
+        "name": "Apple MacBook Air",
+        "category": "Laptop",
+        "description": "Lightweight and sleek laptop for everyday use.",
+        "price": 13999000,
+        "createdAt": "2023-09-27T11:30:00Z"
+    },
+    {
+        "name": "HP Pavilion Desktop",
+        "category": "Computer",
+        "description": "Versatile desktop computer for home and office use.",
+        "price": 9799000,
+        "createdAt": "2023-09-27T09:45:00Z"
+    },
+    {
+        "name": "Samsung 55-Inch 4K Smart TV",
+        "category": "Electronics",
+        "description": "High-quality 4K Smart TV for immersive entertainment.",
+        "price": 11199000,
+        "createdAt": "2023-09-27T15:20:00Z"
+    },
+    {
+        "name": "Organic Brown Rice",
+        "category": "Food",
+        "description": "Healthy and organic brown rice for your meals.",
+        "price": 89999,
+        "createdAt": "2023-09-27T14:15:00Z"
+    },
+    {
+        "name": "Men's Classic T-Shirt",
+        "category": "Clothing",
+        "description": "Comfortable and stylish cotton t-shirt for men.",
+        "price": 249999,
+        "createdAt": "2023-09-27T13:05:00Z"
+    },
+    {
+        "name": "Harry Potter and the Sorcerer's Stone",
+        "category": "Books",
+        "description": "The first book in the Harry Potter series by J.K. Rowling.",
+        "price": 162999,
+        "createdAt": "2023-09-27T12:10:00Z"
+    },
+    {
+        "name": "Modern Leather Sofa",
+        "category": "Furniture",
+        "description": "Sleek and modern leather sofa for your living room.",
+        "price": 11199000,
+        "createdAt": "2023-09-27T17:45:00Z"
+    },
+    {
+        "name": "Toyota Camry Hybrid",
+        "category": "Automotive",
+        "description": "Fuel-efficient hybrid sedan with advanced features.",
+        "price": 391992000,
+        "createdAt": "2023-09-27T16:30:00Z"
+    },
+    {
+        "name": "Nike Running Shoes",
+        "category": "Sports & Outdoors",
+        "description": "High-performance running shoes for athletes.",
+        "price": 1259999,
+        "createdAt": "2023-09-27T18:25:00Z"
+    },
+    {
+        "name": "Organic Face Cream",
+        "category": "Health & Beauty",
+        "description": "Organic face cream for skincare and moisturizing.",
+        "price": 349999,
+        "createdAt": "2023-09-27T19:15:00Z"
+    }
+    
+]
+
+
+
