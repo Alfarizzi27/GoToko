@@ -7,8 +7,8 @@ class Controller{
     static loginpagehandler(req,res){
         const { username, password } = req.body;
 
-User.findOne({ where: { username: username } })
-    .then(user => {
+        User.findOne({ where: { username: username } })
+        .then(user => {
         if (user) {
             if (bcrypt.compareSync(password, user.password)) {
                 res.redirect('/home');
@@ -18,11 +18,11 @@ User.findOne({ where: { username: username } })
         } else {
             res.send('Invalid username or password');
         }
-    })
-    .catch(err => {
+         })
+        .catch(err => {
         console.error(err);
         res.status(500).send('Internal Server Error');
-    });
+         })
     }
 
 
@@ -45,6 +45,10 @@ User.findOne({ where: { username: username } })
         res.render('userprofile')
     }
     static userprofilehandler(req,res){//edit user profile
+    }
+
+    static logout(req,res){
+        res.redirect('/')
     }
 }
 
