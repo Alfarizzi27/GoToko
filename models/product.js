@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       Product.belongsTo(models.Store),
       Product.belongsTo(models.Category)
-      Product.hasMany(models.Transaction)
+      // Product.hasMany(models.Transaction)
     }
     
     get newCondition() {

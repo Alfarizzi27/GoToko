@@ -17,11 +17,15 @@ module.exports = (sequelize, DataTypes) => {
   Transaction.init({
     quantity: DataTypes.INTEGER,
     subTotal: DataTypes.INTEGER,
-    productId: DataTypes.INTEGER,
     userId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Transaction',
   });
+
+  Transaction.beforeCreate((instance) => {
+    instance.quantity = +instance.quantity
+    instance.subTotal = +instance.subTotal
+  })
   return Transaction;
 };

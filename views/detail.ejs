@@ -56,7 +56,8 @@
           <hr>
         </div>
         <div class="col-4">
-          <form action="" method="post">
+          <%= console.log(result); %>
+          <form action="/product/add/<%= result[0].id %>" method="post">
             <div class="card" style="width: 18rem;">
               <div class="card-body">
                 <h5 class="card-title">Masukkan Jumlah</h5>
@@ -72,6 +73,7 @@
                 </div>
                 <div style="display: flex; justify-content: space-between; margin-top: 20px;">
                   <p>Subtotal</p>
+                  <input type="number" name="total" id="output1" hidden>
                   <p style="font-weight: 600;" id="output">
                     <%= currencyFormat(result[0].price) %>
                   </p>
@@ -93,6 +95,7 @@
               let inputElement = document.getElementById('input');
 
               let outputElement = document.getElementById('output');
+              let outputElement1 = document.getElementById('output1');
 
               let value = inputElement.value * newPrice
 
@@ -101,7 +104,8 @@
                 currency: 'IDR',
               }).format(value);
 
-              outputElement.setAttribute('name', value)
+              outputElement.setAttribute('value', value)
+              outputElement1.setAttribute('value', value)
               outputElement.textContent = newValue
             }
           </script>

@@ -17,6 +17,8 @@ app.get('/home', Controller.home)
 
 app.get('/detail/:id', Controller.detail)
 
+app.post('/product/add/:id', Controller.handlerAdd)
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })

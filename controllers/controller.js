@@ -1,5 +1,5 @@
 const currencyFormat = require('../helper/helper');
-const {Category, Product, Store} = require('../models')
+const {Category, Product, Store, Transaction} = require('../models')
 
 
 class Controller {
@@ -32,6 +32,22 @@ class Controller {
         }).catch((err) => {
             res.send(err)
         });
+    }
+
+    static handlerAdd(req, res) {
+        const {qty, total} = req.body
+        const id = req.params.id
+
+        Transaction.create({
+            quantity: qty,
+            subTotal: total,
+            userId: 1
+        })
+            .then((result) => {
+                res.redirect(`/detail/${id}`)
+            }).catch((err) => {
+                res.send(err)
+            });
     }
 
 }
