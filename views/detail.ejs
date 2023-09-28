@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="icon" href="/assets/img/logo.png" type="image/x-icon">
+  <title>LapakKita</title>
+</head>
+
+<body>
+  <h1>LapakKita</h1>
+  <%= console.log(result); %>
+    <div class="container">
+      <div class="row">
+        <div class="col-4" style="display: flex; flex-flow: wrap;">
+          <img src="<%= result[0].imageURL %>" alt="" style="width: 300px; height: 350px; border-radius: 10%;">
+        </div>
+        <div class="col-4">
+          <p style="font-size: 20px; font-weight: 500;">
+            <%= result[0].name %>
+          </p>
+          <p style="font-size: 24px; font-weight: 900;">
+            <%= currencyFormat(result[0].price) %>
+          </p>
+          <p style="margin-bottom: 0px;"><span style="color: rgb(171, 171, 171);">Kondisi: </span>
+            <%= result[0].newCondition %>
+          </p>
+          <p><span style="color: rgb(171, 171, 171);">Stock: </span>
+            <%= result[0].stock %>
+          </p>
+          <p><span style="color: rgb(171, 171, 171);">Description: </span> <br>
+            <%= result[0].description %>
+          </p>
+          <hr>
+          <div style="display: flex;">
+            <div style="width: fit-content; margin-right: 20px;">
+              <img src="<%= result[0].Store.profilePicture %>" alt="" style="height: 50px; border-radius: 100%;">
+            </div>
+            <div class="col">
+              <p style="font-weight: 600; margin-bottom: 0px;">
+                <%= result[0].Store.name %> Store
+              </p>
+              <p style="font-size: 12px;">⭐️ <%= result[0].Store.newRating()%> <span
+                    style="font-size: 12px; color: rgb(152, 152, 152);">rata-rata ulasan</span></p>
+            </div>
+            <div>
+              <button type="button" class="btn btn-outline-success">Follow</button>
+            </div>
+          </div>
+          <hr>
+        </div>
+        <div class="col-4">
+          <form action="" method="post">
+            <div class="card" style="width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title">Masukkan Jumlah</h5>
+                <h6 class="card-subtitle mb-2 text-muted">
+                  <%= result[0].name %>
+                </h6>
+                <hr>
+                <div style="display: flex; align-items: center;">
+                  <input type="number" id="input" oninput="updateOutput()" style="width: 60px; margin-right: 10px;"
+                    placeholder="1" name="qty">
+                  <p style="margin-top: auto; margin-bottom: auto;">Stock: <span style="font-weight: 600; color: red;">
+                      Sisa <%= result[0].stock %> </span> </p>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+                  <p>Subtotal</p>
+                  <p style="font-weight: 600;" id="output">
+                    <%= currencyFormat(result[0].price) %>
+                  </p>
+                </div>
+                <button type="submit" class="btn btn-primary">Beli</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <% let price=result[0].price %>
+        <% let priceFormat=currencyFormat() %>
+          <script>
+            function updateOutput() {
+              let newPrice = "<%=price%>";
+              let newPriceFormat = "<%=priceFormat%>";
+
+              let inputElement = document.getElementById('input');
+
+              let outputElement = document.getElementById('output');
+
+              let value = inputElement.value * newPrice
+
+              let newValue = new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: 'IDR',
+              }).format(value);
+
+              outputElement.setAttribute('name', value)
+              outputElement.textContent = newValue
+            }
+          </script>
+</body>
+
+</html>
