@@ -1,18 +1,105 @@
+const { Op } = require('sequelize');
 const currencyFormat = require('../helper/helper');
-const {Category, Product, Store, Transaction} = require('../models')
-
+const {Category, Product, Store, Transaction, User} = require('../models')
+const bcrypt = require('bcryptjs')
+const Swal = require('sweetalert2')
 
 class Controller {
+    static loginpagerenderer(req,res){
+        const err = req.query.err
+        res.render('loginpage', {err}) 
+    }
+
+    static loginpagehandler(req,res){
+        const { username, password } = req.body;
+
+        User.findOne({ where: { username: username } })
+        .then(user => {
+        if (user) {
+            if (bcrypt.compareSync(password, user.password)) {
+                res.redirect('/home');
+            } else {
+                if(err.name === 'SequelizeValidationError') {
+                res.redirect(`/login?err=${errMsg}`);
+                }
+                else {
+                    res.status(500).send('Internal Server Error');
+                }
+            }
+        } else {
+            // res.send('Invalid username or password');
+        }
+         })
+        .catch(err => {
+        if(err.name === 'SequelizeValidationError') {
+            const errMsg = err.errors.map(el => el.message);
+            res.redirect(`/login/?err=${errMsg}`);
+          } else {
+              res.status(500).send('Internal Server Error');
+          }
+        /*
+         if(err.name === 'SequelizeValidationError') {
+          const errMsg = err.errors.map(el => el.message);
+          res.redirect(``);
+        } else {
+          res.send(err);
+        }
+        */
+         })
+    }
+
+    static registerpagerenderer(req,res){//tampilkan register page
+        const err = req.query.err
+        res.render('registerpage', {err})
+    }
+
+    static registerpagehandler(req,res){//ketika user sudah melakukan register
+        const {username, email, password}= req.body
+      
+        User.create({username, email, password})
+        .then(()=>{
+            res.redirect('/login')
+        })
+        .catch(err => {
+            if(err.name === 'SequelizeValidationError') {
+                const errMsg = err.errors.map(el => el.message);
+                res.redirect(`/register/?err=${errMsg}`);
+              } else {
+                  res.status(500).send('Internal Server Error');
+              }
+          })
+    }
+
+    static userprofilerenderer(req,res){//tampilkan user profile
+        res.render('userprofile')
+    }
+    
+    static userprofilehandler(req,res){//edit user profile
+    }
+
+    static logout(req,res){
+        res.redirect('/')
+    }
+
+
     static lapakpedia(req, res) {
         res.render('index')
     }
 
     static home(req, res) {
-        Product.findAll({
-            include: {
-                all: true
-            }
-        })
+        // Product.findAll({
+        //     include: {
+        //         all: true
+        //     },
+        //     where: {
+        //         stock: {
+        //             [Op.gt]: 0
+        //         }
+        //     }
+        // })
+        const search = req.query.search
+        
+        Product.getProduct(search)
         .then((result) => {
             res.render('lapak', {result, currencyFormat})
         }).catch((err) => {
@@ -28,7 +115,7 @@ class Controller {
             where: {id} 
         })
         .then((result) => {
-            res.render('detail', {result, currencyFormat})
+            res.render('detail', {result, currencyFormat, Swal})
         }).catch((err) => {
             res.send(err)
         });
@@ -44,11 +131,20 @@ class Controller {
             userId: 1
         })
             .then((result) => {
-                res.redirect(`/detail/${id}`)
-            }).catch((err) => {
-                res.send(err)
+                return Product.decrement({stock: +qty}, {where: {id} })
+            })
+            .then(() => {
+                setTimeout(() => {
+                    res.redirect(`/detail/${id}`)
+                }, 3000);
+            })
+            .catch((err) => {
+                console.log(err);
             });
+
     }
+
+   
 
 }
 

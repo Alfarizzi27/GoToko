@@ -1,6 +1,6 @@
 'use strict';
 const {
-  Model
+  Model, Op
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Product extends Model {
@@ -19,6 +19,37 @@ module.exports = (sequelize, DataTypes) => {
       return this.condition === true ? 'Baru' : 'Bekas'
     }
 
+    static getProduct(search) {
+      const option = {
+        where: {},
+        include: {
+          all: true
+        }
+      }
+
+      if (search) {
+        option.where = {
+          [Op.and]: [
+            {name: {
+                [Op.iLike]: `%${search}%`
+              }
+            },
+            {
+              stock: {
+                [Op.gt]: 0
+              }
+            }
+          ]
+        }
+      }else {
+        option.where.stock = {
+          [Op.gt]: 0
+        }
+      }
+
+      return Product.findAll(option)
+    }
+  
   }
   Product.init({
     name: DataTypes.STRING,
