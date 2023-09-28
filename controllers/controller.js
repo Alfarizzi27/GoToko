@@ -6,7 +6,7 @@ const Swal = require('sweetalert2')
 
 class Controller {
     static loginpagerenderer(req,res){
-        const err = req.query.err
+        const err = req.query.error
         res.render('loginpage', {err}) 
     }
 
@@ -17,35 +17,19 @@ class Controller {
         .then(user => {
         if (user) {
             if (bcrypt.compareSync(password, user.password)) {
+                req.session.userId = user.id
                 res.redirect('/home');
             } else {
-                if(err.name === 'SequelizeValidationError') {
-                res.redirect(`/login?err=${errMsg}`);
-                }
-                else {
-                    res.status(500).send('Internal Server Error');
-                }
+                const error ="Invalid username/password"
+                res.redirect(`/login?error=${error}`);
             }
         } else {
+            const error ="Invalid username/password"
+            res.redirect(`/login?error=${error}`);
             // res.send('Invalid username or password');
         }
          })
-        .catch(err => {
-        if(err.name === 'SequelizeValidationError') {
-            const errMsg = err.errors.map(el => el.message);
-            res.redirect(`/login/?err=${errMsg}`);
-          } else {
-              res.status(500).send('Internal Server Error');
-          }
-        /*
-         if(err.name === 'SequelizeValidationError') {
-          const errMsg = err.errors.map(el => el.message);
-          res.redirect(``);
-        } else {
-          res.send(err);
-        }
-        */
-         })
+        .catch(err => res.send(err))
     }
 
     static registerpagerenderer(req,res){//tampilkan register page
@@ -76,11 +60,6 @@ class Controller {
     
     static userprofilehandler(req,res){//edit user profile
     }
-
-    static logout(req,res){
-        res.redirect('/')
-    }
-
 
     static lapakpedia(req, res) {
         res.render('index')
@@ -144,8 +123,15 @@ class Controller {
 
     }
 
-   
+    static getLogout(req, res) {
+        req.session.destroy((err) => {
+            if(err) res.send(err)
+            else {
+                res.redirect('/login')
+            }
+        })
 
+    }
 }
 
 

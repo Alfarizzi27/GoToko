@@ -54,6 +54,9 @@
                                     </div>
 
                                     <form action="/login" method="post">
+                                        <% if (err) { %>
+                                            <p style="color: red;"><%= err %></p>
+                                        <% } %>
                                         <div class="form-outline mb-4">
                                             <input type="text" id="form2Example11" class="form-control"
                                                 placeholder="Username" id="username" name="username" />

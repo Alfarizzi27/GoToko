@@ -69,6 +69,7 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'User',
   });
+  
   User.beforeCreate(async (user) => {
     try {
       const saltRounds = 10; 
